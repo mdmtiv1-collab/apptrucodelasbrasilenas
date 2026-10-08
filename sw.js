@@ -1,5 +1,5 @@
 // Service worker: guarda el app para usarlo sin conexión.
-const VERSION = 'v4';
+const VERSION = 'v5';
 const CACHE = 'brasilenas-' + VERSION;
 const SHELL = ['./', 'index.html', 'styles.css', 'app.js', 'data.js', 'manifest.webmanifest', 'icons/icon-192.png', 'icons/icon-512.png'];
 

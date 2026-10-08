@@ -45,7 +45,7 @@
   }
   function yt(id) {
     var o = /^https?:$/.test(location.protocol) ? '&origin=' + encodeURIComponent(location.origin) : '';
-    return 'https://www.youtube.com/embed/' + id + '?autoplay=1&mute=1&loop=1&playlist=' + id + '&playsinline=1&rel=0&modestbranding=1' + o;
+    return 'https://www.youtube.com/embed/' + id + '?autoplay=1&mute=1&loop=1&playlist=' + id + '&playsinline=1&rel=0&modestbranding=1&controls=0&disablekb=1&fs=0&iv_load_policy=3' + o;
   }
   // YouTube exige el referrer: sin esto (o abriendo el archivo desde el disco) da "Error 153".
   var IFR = ' referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen';
@@ -176,7 +176,7 @@
         if (box.hidden) {
           box.innerHTML = idsDe(d).map(function (id, i) {
             var e = D.ejercicios[id];
-            return '<div class="ej"><div class="ej-h"><span class="num">' + (i + 1) + '</span><b>' + esc(e.nombre) + '</b></div><div class="video"><iframe src="' + yt(e.yt) + '" title="' + esc(e.nombre) + '" loading="lazy"' + IFR + '></iframe></div>' + enlaceYt(e.yt) + '</div>';
+            return '<div class="ej"><div class="ej-h"><span class="num">' + (i + 1) + '</span><b>' + esc(e.nombre) + '</b></div><div class="video"><iframe src="' + yt(e.yt) + '" title="' + esc(e.nombre) + '" loading="lazy"' + IFR + '></iframe><div class="vshield"></div></div>' + '</div>';
           }).join('');
           box.hidden = false; b.textContent = 'Ocultar ejercicios';
         } else { box.innerHTML = ''; box.hidden = true; b.textContent = 'Ver ejercicios del día'; }
@@ -232,7 +232,7 @@
     } else if (G.fase === 'ej') {
       var e = D.ejercicios[ids[G.i]];
       h = topbar(x.titulo) + barra() + '<div class="g-body"><div class="eyebrow">' + (G.i + 1) + ' DE ' + G.n + (G.circ ? ' · VUELTA ' + G.lap + ' DE ' + G.laps : '') + '</div><h1 class="g-t">' + esc(e.nombre) + '</h1>' +
-        '<div class="video"><iframe src="' + yt(e.yt) + '" title="' + esc(e.nombre) + '"' + IFR + '></iframe></div>' + enlaceYt(e.yt) +
+        '<div class="video"><iframe src="' + yt(e.yt) + '" title="' + esc(e.nombre) + '"' + IFR + '></iframe><div class="vshield"></div></div>' +
         '<div class="g-reps"><span>' + (G.circ ? 'POR VUELTA' : 'SERIES') + '</span><b>' + x.reps + ' reps</b><em>' + (G.circ ? G.laps + ' vueltas' : x.series + ' series') + '</em></div></div>' +
         '<div class="g-foot"><button class="btn" id="g-ok">' + ico('check') + 'Completado</button></div>';
     } else if (G.fase === 'desc') {

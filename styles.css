@@ -193,3 +193,6 @@ body.sin-nav #view { padding-bottom: 32px; }
 .salir { margin-top: 16px !important; }
 
 .yt-link { display: block; margin-top: 8px; text-align: center; font-size: 13px; font-weight: 600; color: var(--a1); text-decoration: underline; }
+
+/* Escudo sobre el video: sombra negra en los bordes y bloqueo de clics para que nadie salga a YouTube */
+.vshield { position: absolute; inset: 0; z-index: 2; cursor: default; background: linear-gradient(to bottom, rgba(0,0,0,.92) 0, rgba(0,0,0,.55) 16%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 70%, rgba(0,0,0,.55) 84%, rgba(0,0,0,.92) 100%); box-shadow: inset 0 0 0 3px #000; }
